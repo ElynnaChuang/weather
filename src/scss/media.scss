@@ -1,0 +1,23 @@
+$s_min: 576px;
+$s_max: 767px;
+$m_min: 768px;
+$m_max: 991px;
+$l_min: 992px;
+
+@mixin more576() {
+  @media screen and (min-width: $s_min) {
+    @content;
+  }
+}
+
+@mixin more768() {
+  @media screen and (min-width: $m_min) {
+    @content;
+  }
+}
+
+@mixin more992() {
+  @media screen and (min-width: $l_min) {
+    @content;
+  }
+}

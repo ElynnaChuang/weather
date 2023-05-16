@@ -1,0 +1,16 @@
+@use './scss/reset';
+
+html,
+body {
+  font-family: Lato, 'Noto Sans TC', sans-serif;
+  background-color: #fff;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+}
