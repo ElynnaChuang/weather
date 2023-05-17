@@ -6,7 +6,7 @@ export const CitiesList = () => {
   return (
     <ul className={styles.list}>
       {cities.map(({ city, latitude, longitude }) => (
-        <Link to={`/${latitude}/${longitude}`} key={city}>
+        <Link to={`/${latitude}/${longitude}`} state={city} key={city}>
           <li className={styles.list_item}>{city}</li>
         </Link>
       ))}

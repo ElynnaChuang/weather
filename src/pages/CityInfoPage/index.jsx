@@ -1,19 +1,28 @@
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+
 import styles from './styles.module.scss';
-import { getCityInfo } from '@/api/getCityInfo';
 import { CenterLayout } from '@/layouts';
 import { weatherIcons } from '@/assets/weather_icons';
 import { WeatherCard, WeatherItem } from '@/components';
 
+import { getCityInfo } from '@/api/getCityInfo';
+import { getTimeZone } from '@/api/getTimeZone';
+import { getTime } from '@/utils/day';
+
 const CityInfoPage = () => {
   const { lat, lon } = useParams();
   const [cityInfo, setCityInfo] = useState({});
+  const [cityTime, setCityTime] = useState('');
+  const { state: cityName } = useLocation();
 
   useEffect(() => {
     const getData = async () => {
-      const data = await getCityInfo(lat, lon);
+      const data = await getCityInfo(lat, lon); // api 不穩
       setCityInfo(data);
+
+      const tz = await getTimeZone(lat, lon);
+      setCityTime(() => getTime(tz));
     };
 
     getData();
@@ -23,8 +32,8 @@ const CityInfoPage = () => {
     <CenterLayout>
       <WeatherCard
         icon={weatherIcons.light.clear}
-        date='5/17 19:45'
-        cityName='Taipei'
+        date={cityTime}
+        cityName={cityName}
         temp={22}
       />
       <section className={styles.weather_detail}>
