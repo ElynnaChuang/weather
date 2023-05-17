@@ -6,9 +6,9 @@ export const CitiesList = () => {
   return (
     <ul className={styles.list}>
       {cities.map(({ city, latitude, longitude }) => (
-        <li key={city}>
-          <Link to={`/${latitude}/${longitude}`}>{city}</Link>
-        </li>
+        <Link to={`/${latitude}/${longitude}`} key={city}>
+          <li className={styles.list_item}>{city}</li>
+        </Link>
       ))}
     </ul>
   );

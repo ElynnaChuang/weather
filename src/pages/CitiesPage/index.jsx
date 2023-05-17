@@ -1,11 +1,10 @@
 import { CenterLayout } from '@/layouts';
-import styles from './styles.module.scss';
-import { CitiesList } from '@/components';
+import { CitiesList, Title } from '@/components';
 
 const CitiesPage = () => {
   return (
     <CenterLayout>
-      <h1 className={styles.title}>Home : Cities List</h1>
+      <Title title='Weather' subtitle='~ Choose the city in the list ~' />
       <CitiesList />
     </CenterLayout>
   );

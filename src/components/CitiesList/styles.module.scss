@@ -1,3 +1,33 @@
+@use '../../scss/variables' as v;
+
 .list {
-  border: 1px solid #000;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: v.$gap_1;
+
+  height: 100%;
+  padding: 2rem;
+
+  background-color: rgba($color: #fff, $alpha: 60%);
+  border-radius: v.$bdrs_1;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &_item {
+    padding: 1rem;
+
+    font-weight: 500;
+
+    border: 2px solid #fff;
+    border-radius: v.$bdrs_1;
+
+    transition: all 0.2s ease-in;
+
+    &:hover {
+      box-shadow: 0 0 4px 4px rgba($color: #fff, $alpha: 100%);
+    }
+  }
 }
