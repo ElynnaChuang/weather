@@ -4,6 +4,8 @@
   display: flex;
   flex-direction: column;
   gap: v.$gap_1;
+
+  color: #fff;
   text-align: center;
 }
 
@@ -13,6 +15,6 @@
 }
 
 .subtitle {
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: 400;
 }
