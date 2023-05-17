@@ -3,17 +3,18 @@ import { useEffect, useState } from 'react';
 
 import styles from './styles.module.scss';
 import { CenterLayout } from '@/layouts';
-import { weatherIcons } from '@/assets/weather_icons';
 import { WeatherCard, WeatherItem } from '@/components';
 
 import { getCityInfo } from '@/api/getCityInfo';
 import { getTimeZone } from '@/api/getTimeZone';
 import { getTime } from '@/utils/day';
+import { getWeatherIcon } from '@/utils/getWeatherIcon';
 
 const CityInfoPage = () => {
   const { lat, lon } = useParams();
   const [cityInfo, setCityInfo] = useState({});
   const [cityTime, setCityTime] = useState('');
+  const [weatherIcon, setWeatherIcon] = useState('');
   const { state: cityName } = useLocation();
 
   useEffect(() => {
@@ -28,14 +29,17 @@ const CityInfoPage = () => {
     getData();
   }, []);
 
+  useEffect(() => {
+    if (!cityInfo || !cityTime) return;
+
+    const { mainWeather } = cityInfo;
+    const hour = cityTime.split(' ')[1].split(':')[0];
+    setWeatherIcon(() => getWeatherIcon(mainWeather, hour));
+  }, [cityTime]);
+
   return (
     <CenterLayout>
-      <WeatherCard
-        icon={weatherIcons.light.clear}
-        date={cityTime}
-        cityName={cityName}
-        temp={22}
-      />
+      <WeatherCard icon={weatherIcon} date={cityTime} cityName={cityName} temp={22} />
       <section className={styles.weather_detail}>
         <div className={styles.weather_detail_top}>
           <WeatherItem title='FeelsLike' content={cityInfo.feelsLike} unit='°C' />
