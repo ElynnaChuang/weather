@@ -2,6 +2,9 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import { getCityInfo } from '@/api/getCityInfo';
+import { CenterLayout } from '@/layouts';
+import { weatherIcons } from '@/assets/weather_icons';
+import { WeatherCard } from '@/components';
 
 const CityInfoPage = () => {
   const { lat, lon } = useParams();
@@ -17,14 +20,14 @@ const CityInfoPage = () => {
   }, []);
 
   return (
-    <section className={styles.section}>
-      <h1 className={styles.title}>City Info</h1>
-      <section>
-        <img src='' alt='icon' />
-        <p>City name</p>
-        <h1>Temp : {cityInfo.temperature}</h1>
-      </section>
-      <section>
+    <CenterLayout>
+      <WeatherCard
+        icon={weatherIcons.light.clear}
+        date='5/17 19:45'
+        cityName='Taipei'
+        temp={22}
+      />
+      <section className={styles.weather_detail}>
         <div className={styles.top_area}>
           <div>feelsLike : {cityInfo.feelsLike}</div>
           <div>min : {cityInfo.tempMin}</div>
@@ -38,7 +41,7 @@ const CityInfoPage = () => {
           <div>uvIndex : {cityInfo.uvIndex}</div>
         </div>
       </section>
-    </section>
+    </CenterLayout>
   );
 };
 
