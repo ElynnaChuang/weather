@@ -1,9 +1,14 @@
+import { Image } from '@/components';
 import styles from './styles.module.scss';
+import { images } from '@/assets/bg';
 
 export const CenterLayout = ({ children }) => {
   return (
-    <section className={styles.section}>
-      <div className={styles.container}>{children}</div>
-    </section>
+    <div className={styles.page}>
+      <Image images={images} />
+      <section className={styles.section}>
+        <div className={styles.container}>{children}</div>
+      </section>
+    </div>
   );
 };
