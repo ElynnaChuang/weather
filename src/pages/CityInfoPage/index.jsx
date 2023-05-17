@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 import { getCityInfo } from '@/api/getCityInfo';
 import { CenterLayout } from '@/layouts';
 import { weatherIcons } from '@/assets/weather_icons';
-import { WeatherCard } from '@/components';
+import { WeatherCard, WeatherItem } from '@/components';
 
 const CityInfoPage = () => {
   const { lat, lon } = useParams();
@@ -28,18 +28,15 @@ const CityInfoPage = () => {
         temp={22}
       />
       <section className={styles.weather_detail}>
-        <div className={styles.top_area}>
-          <div>feelsLike : {cityInfo.feelsLike}</div>
-          <div>min : {cityInfo.tempMin}</div>
-          <div>max : {cityInfo.tempMax}</div>
+        <div className={styles.weather_detail_top}>
+          <WeatherItem title='FeelsLike' content={cityInfo.feelsLike} unit='°C' />
+          <WeatherItem title='Min Temp' content={cityInfo.tempMin} unit='°C' />
+          <WeatherItem title='Max Temp' content={cityInfo.tempMax} unit='°C' />
         </div>
-
-        <div className={styles.bottom_area}>
-          <div>humidity : {cityInfo.humidity}</div>
-          <div>rainProb : {cityInfo.rainProb}</div>
-          <div>windSpeed : {cityInfo.windSpeed}</div>
-          <div>uvIndex : {cityInfo.uvIndex}</div>
-        </div>
+        <WeatherItem title='Humidity' content={cityInfo.humidity} unit='%' />
+        <WeatherItem title='Rainy' content={cityInfo.rainProb} unit='%' />
+        <WeatherItem title='Wind Speed' content={cityInfo.windSpeed} unit='m/s' />
+        <WeatherItem title='UV Index' content={cityInfo.uvIndex} />
       </section>
     </CenterLayout>
   );
