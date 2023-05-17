@@ -1,0 +1,20 @@
+@use '../../scss/variables' as v;
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: v.$gap_1;
+
+  color: #fff;
+  text-align: center;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  font-weight: 400;
+}

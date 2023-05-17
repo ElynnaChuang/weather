@@ -1,10 +1,12 @@
-import styles from './styles.module.scss';
+import { CenterLayout } from '@/layouts';
+import { CitiesList, Title } from '@/components';
 
 const CitiesPage = () => {
   return (
-    <section className={styles.section}>
-      <h1 className={styles.title}>Home : Cities List</h1>
-    </section>
+    <CenterLayout>
+      <Title title='Weather' subtitle='~ Choose the city in the list ~' />
+      <CitiesList />
+    </CenterLayout>
   );
 };
 
