@@ -1,11 +1,11 @@
-import { Image } from '@/components';
 import styles from './styles.module.scss';
-import { images } from '@/assets/bg';
+
+import { ReactComponent as BackgroundImage } from '@/assets/bg.svg';
 
 export const CenterLayout = ({ children }) => {
   return (
     <div className={styles.page}>
-      <Image images={images} />
+      <BackgroundImage />
       <section className={styles.section}>
         <div className={styles.container}>{children}</div>
       </section>
