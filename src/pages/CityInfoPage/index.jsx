@@ -12,17 +12,27 @@ import { getWeatherIcon } from '@/utils/getWeatherIcon';
 
 const CityInfoPage = () => {
   const { lat, lon } = useParams();
-  const [cityInfo, setCityInfo] = useState({});
+  const { state: cityName } = useLocation();
+
   const [cityTime, setCityTime] = useState('');
   const [weatherIcon, setWeatherIcon] = useState('');
-  const { state: cityName } = useLocation();
+  const [mainInfo, setMainInfo] = useState({ mainWeather: {}, temp: {} });
+  const [tempDetail, setTempDetail] = useState([]);
+  const [othersDetail, setOthersDetail] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
-      const data = await getCityInfo(lat, lon); // api 不穩
-      setCityInfo(data);
+      const {
+        finalObj: { mainWeather, temp },
+        tempInfo,
+        otherInfo,
+      } = await getCityInfo(lat, lon);
 
-      const tz = await getTimeZone(lat, lon);
+      setMainInfo({ mainWeather, temp });
+      setTempDetail(tempInfo);
+      setOthersDetail(otherInfo);
+
+      const tz = await getTimeZone(lat, lon); // api 不穩
       setCityTime(() => getTime(tz));
     };
 
@@ -30,26 +40,29 @@ const CityInfoPage = () => {
   }, []);
 
   useEffect(() => {
-    if (!cityInfo || !cityTime) return;
+    if (!mainInfo || !cityTime) return;
 
-    const { mainWeather } = cityInfo;
     const hour = cityTime.split(' ')[1].split(':')[0];
-    setWeatherIcon(() => getWeatherIcon(mainWeather, hour));
+    setWeatherIcon(() => getWeatherIcon(mainInfo.mainWeather.value, hour));
   }, [cityTime]);
 
   return (
     <CenterLayout>
-      <WeatherCard icon={weatherIcon} date={cityTime} cityName={cityName} temp={22} />
+      <WeatherCard
+        icon={weatherIcon}
+        date={cityTime}
+        cityName={cityName}
+        temp={mainInfo.temp.value}
+      />
       <section className={styles.weather_detail}>
         <div className={styles.weather_detail_top}>
-          <WeatherItem title='FeelsLike' content={cityInfo.feelsLike} unit='°C' />
-          <WeatherItem title='Min Temp' content={cityInfo.tempMin} unit='°C' />
-          <WeatherItem title='Max Temp' content={cityInfo.tempMax} unit='°C' />
+          {tempDetail.map(({ id, title, value, unit }) => (
+            <WeatherItem key={id} title={title} content={value} unit={unit} />
+          ))}
         </div>
-        <WeatherItem title='Humidity' content={cityInfo.humidity} unit='%' />
-        <WeatherItem title='Rainy' content={cityInfo.rainProb} unit='%' />
-        <WeatherItem title='Wind Speed' content={cityInfo.windSpeed} unit='m/s' />
-        <WeatherItem title='UV Index' content={cityInfo.uvIndex} />
+        {othersDetail.map(({ id, title, value, unit }) => (
+          <WeatherItem key={id} title={title} content={value} unit={unit} />
+        ))}
       </section>
     </CenterLayout>
   );
