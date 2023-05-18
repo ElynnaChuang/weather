@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:3333/weather',
+  baseURL: 'http://localhost:3333/weather/api',
   headers: {
     'Content-Type': 'application/json',
   },

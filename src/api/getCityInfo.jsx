@@ -3,7 +3,7 @@ import axiosInstance from './index.jsx';
 import { itemsIcons } from '@/assets/items_icons/index.jsx';
 
 const cityInfo = {
-  mainWeather: { id: 1, value: 'clear', unit: '' },
+  mainWeather: { id: 1, value: 'cloudy', unit: '' },
   temp: { id: 2, value: 25, unit: '°C' },
   feelsLike: { id: 3, title: 'Feels Like', value: 25, unit: '°C' },
   tempMax: { id: 4, title: 'Max Temp', value: 30, unit: '°C' },
@@ -39,11 +39,15 @@ function getRenderData(newData, defaultData) {
 }
 
 export const getCityInfo = async (lat, lon) => {
-  const {
-    data: { status, data },
-  } = await axiosInstance.get(`/${lat}/${lon}`);
-
-  return status === 'success'
-    ? getRenderData(data, cityInfo)
-    : getRenderData({}, cityInfo);
+  try {
+    const {
+      data: { status, data },
+    } = await axiosInstance.get(`/${lat}/${lon}`);
+    return status === 'success'
+      ? getRenderData(data, cityInfo)
+      : getRenderData({}, cityInfo);
+  } catch (err) {
+    console.error(err);
+    return getRenderData({}, cityInfo);
+  }
 };
