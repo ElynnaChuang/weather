@@ -1,5 +1,7 @@
 import axiosInstance from './index.jsx';
 
+import { itemsIcons } from '@/assets/items_icons/index.jsx';
+
 const cityInfo = {
   mainWeather: { id: 1, value: 'clear', unit: '' },
   temp: { id: 2, value: 25, unit: '°C' },
@@ -23,7 +25,11 @@ function getRenderData(newData, defaultData) {
     return { ...finalObj[key], value };
   });
 
-  const arr = Object.keys(finalObj).map(key => ({ ...finalObj[key], key }));
+  const arr = Object.keys(finalObj).map(key => ({
+    ...finalObj[key],
+    key,
+    icon: itemsIcons[key],
+  }));
   const tempInfo = arr.filter(
     ({ id }) => id >= TEMP_INFO_MIN_ID && id < OTHER_INFO_MIN_ID,
   );

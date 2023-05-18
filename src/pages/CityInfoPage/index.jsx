@@ -16,7 +16,7 @@ const CityInfoPage = () => {
 
   const [cityTime, setCityTime] = useState('');
   const [weatherIcon, setWeatherIcon] = useState('');
-  const [mainInfo, setMainInfo] = useState({ mainWeather: {}, temp: {} });
+  const [mainInfo, setMainInfo] = useState({});
   const [tempDetail, setTempDetail] = useState([]);
   const [othersDetail, setOthersDetail] = useState([]);
 
@@ -40,11 +40,11 @@ const CityInfoPage = () => {
   }, []);
 
   useEffect(() => {
-    if (!mainInfo || !cityTime) return;
+    if (!mainInfo.mainWeather || !cityTime) return;
 
     const hour = cityTime.split(' ')[1].split(':')[0];
     setWeatherIcon(() => getWeatherIcon(mainInfo.mainWeather.value, hour));
-  }, [cityTime]);
+  }, [cityTime, mainInfo.mainWeather]);
 
   return (
     <CenterLayout>
@@ -52,16 +52,17 @@ const CityInfoPage = () => {
         icon={weatherIcon}
         date={cityTime}
         cityName={cityName}
-        temp={mainInfo.temp.value}
+        temp={mainInfo.temp?.value}
+        unit={mainInfo.temp?.unit}
       />
       <section className={styles.weather_detail}>
         <div className={styles.weather_detail_top}>
-          {tempDetail.map(({ id, title, value, unit }) => (
-            <WeatherItem key={id} title={title} content={value} unit={unit} />
+          {tempDetail.map(({ id, title, value, unit, icon }) => (
+            <WeatherItem key={id} title={title} content={value} unit={unit} icon={icon} />
           ))}
         </div>
-        {othersDetail.map(({ id, title, value, unit }) => (
-          <WeatherItem key={id} title={title} content={value} unit={unit} />
+        {othersDetail.map(({ id, title, value, unit, icon }) => (
+          <WeatherItem key={id} title={title} content={value} unit={unit} icon={icon} />
         ))}
       </section>
     </CenterLayout>

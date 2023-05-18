@@ -1,6 +1,6 @@
 import styles from './styles.module.scss';
 
-export const WeatherCard = ({ icon, date, cityName, temp }) => {
+export const WeatherCard = ({ icon, date, cityName, temp, unit }) => {
   return (
     <section className={styles.card}>
       <div className={styles.icon}>{icon}</div>
@@ -11,7 +11,7 @@ export const WeatherCard = ({ icon, date, cityName, temp }) => {
         </div>
         <div className={styles.info_temp}>
           {temp}
-          <span>°C</span>
+          <span>{unit}</span>
         </div>
       </div>
     </section>
