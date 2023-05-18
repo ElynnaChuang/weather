@@ -3,7 +3,7 @@ import axios from 'axios';
 const TZAPI_KEY = import.meta.env.VITE_TZAPI_KEY;
 
 const axiosInstance = axios.create({
-  baseURL: 'http://api.timezonedb.com/v2.1',
+  baseURL: 'https://api.timezonedb.com/v2.1',
   timeout: 20000,
 });
 
