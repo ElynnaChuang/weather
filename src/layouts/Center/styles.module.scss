@@ -1,14 +1,28 @@
-.page > svg:first-child {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+@import '../../scss/media';
+
+.page {
+  flex: 1;
+
+  & > svg:first-child {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+  }
 }
 
 .section {
+  @include more576 {
+    padding: 3rem;
+  }
+
   display: flex;
   width: 100%;
-  height: 100vh;
-  padding: 3rem;
+  height: 100%;
+  padding: 2rem;
 }
 
 .container {

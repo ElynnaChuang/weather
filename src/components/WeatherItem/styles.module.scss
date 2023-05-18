@@ -5,49 +5,66 @@
 .items {
   @include v.bg-gradient;
 
+  @include more576 {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
   display: flex;
-  flex-direction: column;
   gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
 
   width: 100%;
   padding: 1rem;
 
   .title {
     @include more576 {
-      font-size: 2vmin;
+      font-size: 1.75vmin;
     }
+
+    display: flex;
+    align-items: center;
 
     width: fit-content;
     padding: 0.5rem;
 
     font-size: 3vmin;
-    font-weight: 500;
+    font-weight: 700;
     color: v.$primary_500;
 
     background-color: #fff;
     border-radius: 0.25rem;
 
     span {
-      margin-right: 0.5rem;
+      @include more992 {
+        margin-right: 1rem;
+      }
+
+      margin-right: 0.25rem;
     }
   }
 
   .content {
     @include more576 {
-      font-size: 4vmin;
-
-      & > span {
-        font-size: 3vmin;
-      }
+      margin-top: auto;
+      font-size: 3vmin;
     }
 
-    margin-top: auto;
-    font-size: 5vmin;
+    font-size: 4vmin;
+    font-weight: 500;
     color: #fff;
     text-align: right;
 
     & > span {
-      margin-left: 1rem;
+      @include more576 {
+        margin-left: 0.5rem;
+        font-size: 2vmin;
+      }
+
+      margin-left: 0.25rem;
+      font-size: 3vmin;
     }
   }
 }

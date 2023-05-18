@@ -8,16 +8,15 @@
   @include more576 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto repeat(2, 200px);
+    grid-template-rows: auto;
   }
 
   overflow-y: scroll;
   display: flex;
-  flex: 1;
   flex-direction: column;
   gap: 1rem;
 
-  padding: 2rem;
+  padding: 1.5rem;
 
   &::-webkit-scrollbar {
     display: none;
@@ -26,7 +25,7 @@
   &_top {
     @include more576 {
       grid-template-columns: 40% 1fr;
-      grid-template-rows: repeat(2, 120px);
+      grid-template-rows: repeat(2, auto);
       margin-bottom: 16px;
     }
 

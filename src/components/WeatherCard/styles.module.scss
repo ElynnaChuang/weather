@@ -9,7 +9,7 @@
 }
 
 .icon {
-  width: 20vmax;
+  width: 45%;
   max-width: 200px;
   border-radius: v.$bdrs_1;
 
@@ -32,12 +32,12 @@
   justify-content: center;
 
   width: 100%;
-  margin: 2rem 3rem 2rem 0;
+  margin: 2rem 2rem 2rem 0;
 
   &_city {
     @include more576 {
       font-size: 3vmin;
-      font-weight: 400;
+      font-weight: 500;
     }
 
     display: flex;
@@ -46,7 +46,7 @@
     justify-content: flex-end;
 
     font-size: 3.6vmin;
-    font-weight: 400;
+    font-weight: 700;
     color: v.$primary_500;
   }
 
