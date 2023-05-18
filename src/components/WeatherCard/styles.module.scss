@@ -1,0 +1,74 @@
+@use '../../scss/variables' as v;
+
+@import '../../scss/media';
+
+.card {
+  @include v.bg-blur;
+
+  display: flex;
+}
+
+.icon {
+  width: 50vw;
+  max-width: 150px;
+  height: 50vw;
+  height: 100%;
+
+  border-radius: v.$bdrs_1;
+
+  svg {
+    height: 100%;
+  }
+}
+
+.info {
+  @include more576 {
+    gap: v.$gap_2;
+  }
+
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: v.$gap_1;
+  align-items: flex-end;
+  justify-content: center;
+
+  margin: 2rem 3rem 2rem 0;
+
+  &_city {
+    @include more576 {
+      font-size: 3vmin;
+      font-weight: 400;
+    }
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(v.$gap_1 / 2) v.$gap_1;
+    justify-content: flex-end;
+
+    font-size: 3.6vmin;
+    font-weight: 400;
+    color: v.$primary_500;
+  }
+
+  &_temp {
+    @include more576 {
+      font-size: 8vmin;
+      font-weight: 300;
+
+      span {
+        font-size: 3vmin;
+      }
+    }
+
+    font-size: 10vmin;
+    font-weight: 300;
+    color: #fff;
+
+    span {
+      margin-left: 8px;
+      font-size: 4vmin;
+      vertical-align: top;
+    }
+  }
+}

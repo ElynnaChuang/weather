@@ -1,0 +1,53 @@
+@use '../../scss/variables' as v;
+
+@import '../../scss/media';
+
+.items {
+  @include v.bg-gradient;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  width: 100%;
+  padding: 1rem;
+
+  .title {
+    @include more576 {
+      font-size: 2vmin;
+    }
+
+    width: fit-content;
+    padding: 0.5rem;
+
+    font-size: 3vmin;
+    font-weight: 500;
+    color: v.$primary_500;
+
+    background-color: #fff;
+    border-radius: 0.25rem;
+
+    span {
+      margin-right: 0.5rem;
+    }
+  }
+
+  .content {
+    @include more576 {
+      font-size: 4vmin;
+
+      & > span {
+        font-size: 3vmin;
+      }
+    }
+
+    margin-top: auto;
+    font-size: 5vmin;
+    color: #fff;
+    text-align: right;
+
+    & > span {
+      margin-left: 1rem;
+    }
+  }
+}

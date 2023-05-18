@@ -1,3 +1,8 @@
+// color
+$primary_100: #c3daf3;
+$primary_500: #658fae;
+$primary_900: #304e78;
+
 // border radius
 $bdrs_1: 8px;
 
@@ -5,3 +10,16 @@ $bdrs_1: 8px;
 $gap_1: 1rem;
 $gap_2: 2rem;
 $gap_3: 3rem;
+
+// white bg
+@mixin bg-blur {
+  background-color: rgba($color: #fff, $alpha: 30%);
+  -webkit-backdrop-filter: blur(8px) brightness(120%);
+  backdrop-filter: blur(8px) brightness(120%);
+  border-radius: $bdrs_1;
+}
+
+@mixin bg-gradient {
+  border-radius: $bdrs_1;
+  box-shadow: inset 0 0 20px 2px #ffffff80, 0 0 0 0 #fff;
+}
