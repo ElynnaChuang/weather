@@ -21,28 +21,27 @@
 
 .info {
   @include more576 {
-    gap: v.$gap_2;
+    gap: v.$sp_2;
   }
 
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: v.$gap_1;
+  gap: v.$sp_1;
   align-items: flex-end;
   justify-content: center;
 
   width: 100%;
-  margin: 2rem 2rem 2rem 0;
+  margin: v.$sp_2 v.$sp_2 v.$sp_2 0;
 
   &_city {
     @include more576 {
-      font-size: 3vmin;
-      font-weight: 500;
+      font-size: 2.5vmin;
     }
 
     display: flex;
     flex-wrap: wrap;
-    gap: calc(v.$gap_1 / 2) v.$gap_1;
+    gap: calc(v.$sp_1 / 2) v.$sp_1;
     justify-content: flex-end;
 
     font-size: 3.6vmin;
@@ -62,10 +61,10 @@
 
     font-size: 10vmin;
     font-weight: 300;
-    color: #fff;
+    color: v.$white;
 
     span {
-      margin-left: 8px;
+      margin-left: calc(v.$sp_1 / 2);
       font-size: 4vmin;
       vertical-align: top;
     }

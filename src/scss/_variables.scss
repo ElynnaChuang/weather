@@ -2,14 +2,23 @@
 $primary_100: #c3daf3;
 $primary_500: #658fae;
 $primary_900: #304e78;
+$white: #fff;
+$bd_color: #fff;
+$text_hover: #fff;
+$bg_highlight: #fff;
 
 // border radius
 $bdrs_1: 8px;
+$bdrs_2: 16px;
 
-// gap
-$gap_1: 1rem;
-$gap_2: 2rem;
-$gap_3: 3rem;
+// space
+$sp_1: 1rem;
+$sp_2: 2rem;
+$sp_3: 3rem;
+$sp_4: 4rem;
+
+// transition
+$trans_1: all 0.1s ease-out;
 
 // white bg
 @mixin bg-blur {

@@ -6,10 +6,10 @@
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  gap: v.$gap_1;
+  gap: v.$sp_1;
 
   height: 100%;
-  padding: 2rem;
+  padding: v.$sp_2;
 
   &::-webkit-scrollbar {
     display: none;
@@ -18,23 +18,23 @@
   &_item {
     @include v.bg-gradient;
 
-    padding: 1rem;
+    padding: v.$sp_1;
 
     font-size: 1rem;
     font-weight: 700;
     color: v.$primary_900;
 
-    border: 2px solid #fff;
+    border: 2px solid v.$bd_color;
 
-    transition: all 0.2s ease-in;
+    transition: v.$trans_1;
 
     &:hover,
     &:active {
       @include v.bg-gradient;
 
-      color: #fff;
+      color: v.$text_hover;
       box-shadow: inset 0 0 0 0 #ffffff80, 0 0 8px 2px #fff;
-      transition: all 0.2s ease-in;
+      transition: v.$trans_1;
     }
   }
 }

@@ -7,17 +7,17 @@
 
   @include more576 {
     flex-direction: column;
-    gap: 1rem;
+    gap: v.$sp_1;
     align-items: stretch;
   }
 
   display: flex;
-  gap: 0.5rem;
+  gap: calc(v.$sp_1 / 2);
   align-items: center;
   justify-content: space-between;
 
   width: 100%;
-  padding: 1rem;
+  padding: v.$sp_1;
 
   .title {
     @include more576 {
@@ -28,21 +28,21 @@
     align-items: center;
 
     width: fit-content;
-    padding: 0.5rem;
+    padding: calc(v.$sp_1 / 2);
 
     font-size: 3vmin;
     font-weight: 700;
     color: v.$primary_500;
 
-    background-color: #fff;
-    border-radius: 0.25rem;
+    background-color: v.$bg_highlight;
+    border-radius: v.$bdrs_1;
 
     span {
       @include more992 {
-        margin-right: 1rem;
+        margin-right: v.$sp_1;
       }
 
-      margin-right: 0.25rem;
+      margin-right: calc(v.$sp_1 / 2);
     }
   }
 
@@ -54,16 +54,16 @@
 
     font-size: 4vmin;
     font-weight: 500;
-    color: #fff;
+    color: v.$white;
     text-align: right;
 
     & > span {
       @include more576 {
-        margin-left: 0.5rem;
+        margin-left: calc(v.$sp_1 / 2);
         font-size: 2vmin;
       }
 
-      margin-left: 0.25rem;
+      margin-left: calc(v.$sp_1 / 4);
       font-size: 3vmin;
     }
   }

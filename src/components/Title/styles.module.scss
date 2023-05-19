@@ -5,9 +5,9 @@
 .header {
   display: flex;
   flex-direction: column;
-  gap: v.$gap_1;
+  gap: v.$sp_1;
 
-  color: #fff;
+  color: v.$white;
   text-align: center;
 }
 
