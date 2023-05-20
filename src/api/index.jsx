@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:3333/weather/',
+  baseURL: `${import.meta.env.VITE_WEATHER_API_BASEURL}`,
   headers: {
     'Content-Type': 'application/json',
   },

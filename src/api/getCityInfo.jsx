@@ -43,6 +43,7 @@ export const getCityInfo = async (lat, lon) => {
     const {
       data: { status, data },
     } = await axiosInstance.get(`/${lat}/${lon}`);
+
     return status === 'success'
       ? getRenderData(data, cityInfo)
       : getRenderData({}, cityInfo);
